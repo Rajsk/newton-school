@@ -1,0 +1,145 @@
+Equilibrium Point
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      // Your code here
+            Scanner sc=new Scanner(System.in);
+            int n;
+            n=sc.nextInt();
+            int[] arr=new int[n];
+            int sum=0;
+            for(int i=0;i<n;i++){
+                arr[i]=sc.nextInt();
+                sum+=arr[i];
+            }
+            int left=0;
+            for(int i=0;i<n;i++){
+                int right=sum-arr[i]-left;
+                if(right==left){
+                    System.out.println(i);
+                    return;
+                }
+                left+=arr[i];
+            }
+            System.out.println("-1");
+    }
+}
+Maximum Contiguous Subarray Sum
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+class Main
+{
+  static long Sum(int   a[], int size)
+   {
+    long  max_so_far = -1000000007, max_ending_here = 0;
+
+    for (int i = 0; i < size; i++)
+    {
+        max_ending_here = max_ending_here + a[i];
+        if (max_so_far < max_ending_here)
+            max_so_far = max_ending_here;
+
+        if (max_ending_here < 0)
+            max_ending_here = 0;
+    }
+    return max_so_far;
+}
+
+	public static void main (String[] args) throws java.lang.Exception
+	{
+       BufferedReader br =
+            new BufferedReader(new InputStreamReader(System.in));
+        
+            int t = Integer.parseInt(br.readLine().trim());
+            while(t-->0){
+       
+            int n = Integer.parseInt(br.readLine().trim());
+            int arr[] = new int[n];
+            String inputLine[] = br.readLine().trim().split(" ");
+            for (int i = 0; i < n; i++) {
+                arr[i] = Integer.parseInt(inputLine[i]);
+            }
+	    System.out.println(Sum(arr,n));
+	}
+	
+	}
+}
+Number of Subarrays With Odd Sum
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      // Your code here
+       Scanner sc = new Scanner(System.in);
+       int n= sc.nextInt();
+       int arr[]=new int[n];
+       for(int i =0; i<n; i++){
+           arr[i]=sc.nextInt();
+       }
+       for (int i=1; i<n; i++){
+           arr[i]+=arr[i-1];
+       }               
+       long even = 0;
+       long odd = 0;
+       long ans = 0;
+       even++;
+       for(int i = 0; i<n; i++){
+           if(arr[i]%2==0)
+           even++;
+       
+       else odd++;
+    }
+    ans = even*odd;
+    System.out.println(ans);
+}
+}
+Max submatrix sum
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      int n,m;
+                      Scanner sc=new Scanner(System.in);
+                      n=sc.nextInt();
+                      m=sc.nextInt();
+                      int[][] arr=new int[n][m];
+                      for(int i=0;i<n;i++){
+                          for(int j=0;j<m;j++){
+                          arr[i][j]=sc.nextInt();
+                          }
+                      }
+                      for(int j=0;j<m;j++){
+                          for(int i=1;i<n;i++){
+                              arr[i][j]+=arr[i-1][j];
+                          }
+                      }
+                      int ans=-10000007;
+                      for(int i=0;i<n;i++){
+                          for(int j=i;j<n;j++){
+                              int sum=0;
+                              for(int k=0;k<m;k++){
+                                  if(i>0)
+                                  sum+=arr[j][k]-arr[i-1][k];
+                                  else sum+=arr[j][k];
+                                  ans=Math.max(ans,sum);
+                                  if(sum<0)sum=0;
+                              }
+                          }
+                      }
+                      System.out.println(ans);
+
+    }
+}
