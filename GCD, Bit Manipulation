@@ -1,0 +1,162 @@
+#GCD frequency
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int n = sc.nextInt();
+        int[]a=new int[n];
+        HashMap<Integer,Integer>map=new HashMap<>();
+        for(int i=0; i<n; i++)
+        {
+            a[i]=sc.nextInt();
+            map.put(a[i],map.getOrDefault(a[i],0)+1);
+        }
+        long sum = 0;
+        for (int i =0; i<n;i++)
+        {
+            sum+=gcd(a[i],map.get(a[i]));
+        }
+        System.out.println(sum);
+    }
+    static int gcd(int a, int b)
+    {
+        if(b==0)
+        return a;
+        return gcd(b,a%b);
+    }
+}
+#Minimize XOR
+#include <bits/stdc++.h>
+using namespace std;
+//XoR...
+int minXOR(int arr[], int n)
+{
+	sort(arr, arr + n);
+
+	int minXor = INT_MAX;
+	int val = 0;
+
+	for (int i = 0; i < n - 1; i++) {
+		val = arr[i] ^ arr[i + 1];
+		minXor = min(minXor, val);
+	}
+
+	return minXor;
+}
+
+int main()
+{
+	int n;
+	cin>>n;
+
+	int arr[n];
+	for(int i=0;i<n;i++){
+		cin>>arr[i];
+	}
+	cout << minXOR(arr, n) << endl;
+
+	return 0;
+}
+#Xor-Fun
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      Scanner sc=new Scanner(System.in);
+                      int n=sc.nextInt();
+                      long arr[]=new long[n];
+                      for(int i=0;i<n;i++){
+                          arr[i]=sc.nextInt();
+                      }
+                      long sum=arr[n-1];
+
+                      for(int i=n-2;i>=0;i--){
+                          arr[i]=arr[i]^arr[i+1];
+                          sum+=arr[i];
+
+                      }
+                      System.out.println(sum);
+    }
+}
+#Special numbers
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		long n = sc.nextLong();
+		long x = (long)Math.sqrt(n);
+		HashMap<Long, Integer> hm = new HashMap<>();
+		for(long i=1;i<=x;i++){
+			if(n%i==0){
+				hm.put(i, hm.getOrDefault(i, 0) + 1);
+				if(n/i!=i){
+					hm.put(n/i, hm.getOrDefault(n/i, 0) + 1);
+				}
+			}
+		}
+		System.out.println(hm.size());
+	}
+}
+#Identical Groups
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		int xRed=sc.nextInt();
+		int yBlue=sc.nextInt();
+        int min=xRed>yBlue?yBlue:xRed;
+        int count=0;
+     
+		System.out.println(gcd(xRed,yBlue));
+
+
+	}
+
+	static int gcd(int a, int b)
+	{
+	if (b == 0)
+    	return a;
+		
+    return gcd(b, a % b);
+	}
+}
+#Two Bits
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      Scanner sc = new Scanner(System.in);
+		long x = sc.nextLong();
+		long y = Long.MAX_VALUE;
+		
+		for(long i = 0; i < 63; i++){
+			long first = (1l << i); //0000000.....10
+			for(long j = i + 1; j < 63; j++){
+				long second = (1l << j);//0000000000...100
+				long number = first | second; //00000000.....110
+				y = Math.min(y, Math.abs(x - number)); 
+			}
+		}
+		System.out.println(y);
+    }
+}
+
