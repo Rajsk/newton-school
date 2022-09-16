@@ -1,0 +1,155 @@
+#Operators
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      // Your code here
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt(),b=sc.nextInt();
+        System.out.println((a+b));
+        System.out.println((a-b));
+        System.out.println((a*b));
+        System.out.println((a/b));
+    }
+}
+#Data types
+import java.util.*;
+import java.io.*;
+class Main {
+	public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+        long b=sc.nextLong();
+        float c=sc.nextFloat();
+        double d=sc.nextDouble();
+        char e=sc.next().charAt(0);
+
+        System.out.println(a);
+        System.out.println(b);
+        System.out.printf("%.2f\n",c);
+        System.out.printf("%.4f\n",d);
+        System.out.println(e);
+	}
+}
+#Simple Sum
+import java.util.*;
+import java.io.*;
+class Main {
+	public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+		int a=sc.nextInt();
+		int b=sc.nextInt();
+		int c=sc.nextInt();
+		System.out.println((a+b+c));
+	}
+}
+#Simple Input- String
+import java.util.*;
+import java.io.*;
+class Main {
+	public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+		String s=sc.next();
+		System.out.println(s);
+	}
+}
+#Simple Input- Integer
+import java.util.*;
+import java.io.*;
+class Main {
+	public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		System.out.println(n);
+	}
+}
+#Nobita and Profit
+import java.util.*;
+import java.io.*;
+class Main {
+	public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+		int c=sc.nextInt();
+		int s=sc.nextInt();
+        int nobita=0;
+		if(c>s){
+            nobita=c-s;
+        }else{
+            nobita=s-c;
+        }
+		System.out.println(nobita);
+	}
+}
+#Nobits's Test
+import java.util.*;
+import java.io.*;
+class Main {
+	public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+		int d =sc.nextInt();
+        int q =sc.nextInt();
+        if(q==0){
+         System.out.println("-1");
+        }else{
+         System.out.println(d/q);
+        }
+	}
+}
+#Dishes
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      // Your code here
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt(),b=sc.nextInt();
+        if(a>b){
+            System.out.println((a-b));
+        }else{
+            System.out.println((b-a));
+        }
+    }
+}
+#Waiting Time
+import java.util.*;
+import java.io.*;
+class Main {
+	public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+		int c=sc.nextInt();
+		int s=sc.nextInt();
+		// int nobita=s-c;
+		System.out.println((c*s));
+	}
+}
+#Steps Execution
+import java.util.*;
+import java.io.*;
+class Main {
+    public static void main (String[] args) {
+        Scanner Sc = new Scanner(System.in);
+        int a = Sc.nextInt();
+        System.out.print((((((a)+8)/3)%5)*5));  
+    }
+}
+#Magic Trick
+import java.util.*;
+import java.io.*;
+class Main {
+    public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+
+		System.out.println(a + b/2);
+	}
+}
+
+
+
