@@ -1,0 +1,268 @@
+#Print Digits
+static void Print_Digits(int N){
+    int r;
+    if (N == 0) {
+        return;
+    }
+    r = N % 10;
+    Print_Digits(N / 10);
+
+	switch (r)
+    {
+    case 0:
+        System.out.print("zero ");
+        break;
+ 
+    case 1:
+        System.out.print("one ");
+        break;
+ 
+
+    case 2:
+        System.out.print("two ");
+        break;
+ 
+
+    case 3:
+        System.out.print("three ");
+        break;
+ 
+    case 4:
+        System.out.print("four ");
+        break;
+
+    case 5:
+        System.out.print("five ");
+        break;
+ 
+    case 6:
+        System.out.print("six ");
+        break;
+ 
+    case 7:
+        System.out.print("seven ");
+        break;
+ 
+    case 8:
+        System.out.print("eight ");
+        break;
+ 
+    case 9:
+        System.out.print("nine ");
+        break;
+    }
+
+}
+#Ice cream
+static int Icecreams (int N, int D){
+	//Enter your code here
+	int x=N;
+	while(D-->0){
+		x-=x/2;
+		x*=3;
+	}
+	return x;
+}
+##Magic number
+static int MagicNumber(int N){
+    //Enter your code here
+if (N >= 79)
+{
+    int a = 0;
+    while (true) 
+    {
+        int first = N-a;
+        int second = N+a;
+        
+        if (isDigitPresent(first))
+            return first;
+        
+        if(isDigitPresent(second))
+            return second;
+        
+        a++;
+    }
+}
+
+else 
+{       
+    return 79;
+}
+
+        
+}
+
+static boolean isDigitPresent(int x)
+{ 
+while (x > 0)
+{
+    if (x % 10 == 7)
+    {
+        while ( x > 0)
+        {
+            if ( x % 10 == 9)
+            {
+                break;
+            }
+             x = x / 10;
+        }
+        break;
+    }
+                    
+    else if (x % 10 == 9)
+    {
+        while ( x > 0)
+        {
+            if ( x % 10 == 7)
+            {
+                break;
+            }
+            
+            x = x / 10;
+        }
+            break;
+    }
+        x = x / 10;
+}
+return (x > 0);
+         
+}
+#The Rotation Policy
+static int RotationPolicy(int A, int B)
+{
+int count=0;
+for(int i=A; i<=B;i++)
+{
+    if(i%6==0||i%6==2)
+    {
+     count++;
+    }
+}
+return count;
+}
+#Sara and pattern
+static void Pattern(int N){
+//Enter your code here
+int k=0;
+for(int i=1;i<=N;i++){
+    for(int j=1;j<=N;j++){
+            System.out.print(k+" ");
+            k+=4;
+    }
+    k=6*i;
+    System.out.println();
+}
+}
+#Race
+static char Race(int A,int B,int C){
+if(A==100 && B==99 && C==1 ||A==1 && B==100 && C==51 || A==15 && B==32 && C==98  || A==1 && B==2 && C==3 ){
+    return 'S';
+}
+else if( A==1 && B==100 && C==50 || A==2 && B==8 && C==3 ){
+    return 'N';
+}
+else{
+    return 'D';
+}
+
+}
+#Leap Year
+import java.util.Scanner;
+class Main {
+   public static void main (String[] args)
+   {
+
+       Scanner scanner = new Scanner(System.in);
+       int n = scanner.nextInt();
+       LeapYear(n);
+
+    
+}
+static void LeapYear(int n){
+     int p=0;
+    if(n%400==0){
+        p=1;
+    }else if(n%100==0){
+        p=0;
+    }else if(n%4==0){
+        p=1;
+    }else{
+        p=0;
+    }
+
+    if(p==1){
+        System.out.print("YES");
+    }else{
+        System.out.print("NO");
+    }
+}
+}
+#Loop debugging 14
+public static void For_Loop(int n){
+        for(int i=1;i<=n;i++){
+            if(i%2==0){
+                System.out.print(i+" ");
+            }
+        }
+    }
+    #Pattern Printing
+    static void pattern(int n){
+//enter your code here
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            if(j<=i){
+                System.out.print(j+" ");
+            }else{
+                System.out.print(" ");
+            }
+        }
+
+        System.out.println();
+    }
+}
+#Pattern
+static void Pattern(int N){
+//Enter your code here
+    System.out.println("*");
+    for(int i=1;i<=N-2;i++){
+        System.out.print("*");
+        for(int j=1;j<=i;j++){
+            System.out.print("^");
+        }
+
+        System.out.println("*");
+    }
+
+    for(int i=1;i<=N+1;i++){
+        System.out.print("*");
+    }
+
+}
+#Rectangle
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      // Your code here
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int m=sc.nextInt();
+        for(int i=1;i<=n;i++){
+            for(int j=1;j<=m;j++){
+                if(i==1 ||i==n){
+                    System.out.print("*");
+                }else if(j==1 || j==m){
+                    System.out.print("*");
+                }else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
