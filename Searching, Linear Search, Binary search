@@ -1,0 +1,347 @@
+Find Positions of X in array
+import java.io.*;
+import java.util.*;
+
+class Main {
+	public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        while(n>=1){
+            int l = sc.nextInt();
+            int find = sc.nextInt();
+            int arr [] = new int[l];
+
+            for(int i=0; i<l; i++){
+                arr[i] = sc.nextInt();
+            }
+            boolean isPresent = false;
+            for(int i=0; i<l; i++){
+                if(arr[i] == find){
+                    System.out.print(i+" ");
+                    isPresent = true;
+                }
+            }
+            if(!isPresent){
+                System.out.print("Not found");
+            }
+            System.out.println();
+            n--;
+        }
+	}
+}
+Square Root Of an Integer
+#include<bits/stdc++.h>
+using namespace std;
+
+int floorSqrt(int x)
+{
+
+	if (x == 0 || x == 1)
+	return x;
+
+	int i = 1, result = 1;
+	while (result <= x)
+	{
+	i++;
+	result = i * i;
+	}
+	return i - 1;
+}
+
+
+int main()
+{
+	int n;
+	cin>>n;
+
+	for(int i=0;i<n;i++){
+		int x;
+		cin>>x;
+	cout << floorSqrt(x) << endl;
+	}
+	return 0;
+}
+Guardians of Galaxy
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+	public static void main (String[] args) {
+                      // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+
+        long low = 0;
+        long high = Integer.MAX_VALUE;
+        long ans = 0;
+        while(low <= high){
+            long mid = low+ (high - low) / 2;
+            long newThrust = mid;
+            newThrust = gamoThrust(arr, newThrust);
+            if(newThrust >= 0){
+                ans = mid;
+                high = mid - 1;
+            }
+            else{
+                low = mid + 1;
+            }
+        }
+
+        System.out.println(ans);
+	}
+    private static long gamoThrust(int[] arr, long newThrust){
+        for(int i = 0; i < arr.length; i++){
+            newThrust = newThrust*2- arr[i];
+            if(newThrust >= Integer.MAX_VALUE){
+                return 1;
+            }
+            if(newThrust < 0){
+                return -1;
+            }
+        }
+        return newThrust;
+    }
+}
+Check if array is sorted and rotated clockwise
+import java.io.*;
+class Main{
+	static boolean Solve(int arr[], int n)
+	{
+		int x = 0, y = 0;
+		for (int i = 0; i < n - 1; i++) {
+			if (arr[i] < arr[i + 1])
+				x++;
+			else
+				y++;
+		}
+
+
+		if (x == 1 || y == 1) {
+			if (arr[n - 1] < arr[0])
+				x++;
+			else
+				y++;
+
+		
+			if (x == 1 || y == 1)
+				return true;
+		}
+	
+		return false;
+	}
+	public static void main(String[] args)throws IOException{
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    int t=Integer.parseInt(br.readLine());
+    while(t-- > 0){
+          int n = Integer.parseInt(br.readLine());
+          int arr[] = new int[n];
+          String input[] = br.readLine().trim().split(" ");
+          for(int i = 0; i < n; ++i){
+                 arr[i] = Integer.parseInt(input[i]);
+          }
+          
+		boolean check = Solve(arr, n);
+		if (check == true)
+			System.out.println("Yes");
+		else
+			System.out.println("No");
+         }
+	}
+}
+Perfect Square
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+        long n=sc.nextLong();
+        while(n-->0){
+            long q=sc.nextLong();
+            long x=(long)Math.sqrt(q);
+            if(x*x==q){
+                System.out.println("YES");
+            }
+            else{
+                System.out.println("NO");
+            }
+        }
+
+    }
+}
+Sum of Cubes
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      long n;
+                      Scanner sc=new Scanner(System.in);
+                      n=sc.nextLong();
+                      for(long ii=1;ii<=10000;ii++){
+                          long a=ii*ii*ii;
+                          long b=n-a;
+                          long i=0;
+                          long j=10000;
+                          while(i<=j){
+                              long mid=(i+j)/2;
+                              if(mid*mid*mid==b){
+                                 System.out.println("YES");
+                                 return;
+                              }
+                              else if(mid*mid*mid>b){
+                                  j=mid-1;
+                              }
+                              else i=mid+1;
+                          }
+                      }
+                      System.out.println("NO");
+    }
+}
+Number of Elements
+import java.io.*;
+import java.util.*;
+ 
+public class Main {
+    static int[] Solve(int[] arr, int[] brr, int N, int K) {
+        Arrays.sort(arr);
+        int[] result = new int[K];
+        for(int i = 0; i < K; i++)
+        {
+            int val = binarySearch(arr, brr[i]);
+            result[i] = val;
+        }
+        return result;
+    }
+ 
+    static int binarySearch(int[] arr, int n)
+    {
+        int low = 0;
+        int high = arr.length - 1;
+        int space = arr.length;
+        while(low <= high)
+        {
+            int mid = low + (high - low)/2;
+            if(n< arr[mid])
+            {
+                space = mid;
+                high = mid - 1;
+            } 
+            else low = mid + 1;
+        }
+        return arr.length - space;
+    }
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine().trim());
+        String[] input1 = br.readLine().trim().split(" ");
+        int[] arr = new int[n];
+        for (int i = 0; i < input1.length; i++) {
+            arr[i] = Integer.parseInt(input1[i]);
+        }
+
+        int k = Integer.parseInt(br.readLine().trim());
+        int[] brr = new int[k];
+        for (int i = 0; i < k; i++) {
+            brr[i] = Integer.parseInt(br.readLine().trim());
+        }
+        int[] crr = Solve(arr, brr, n, k);
+        for (int i = 0; i< crr.length; i++) {
+            System.out.println(crr[i]);
+        }
+    }
+}
+Find it!!
+import java.io.*; // for handling input/output...
+import java.util.*; // contains Collections framework..
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static long mod=(long)1e+18;
+    public static long Solve(long n){
+        long ans=0;
+        for(long x=1;x<=Math.sqrt(mod);x++){
+            if(n==(x*x)+(3*x)){
+                ans=x;
+                return ans;
+            }else{
+                ans=-1;
+            }
+        }
+        return ans;
+    }
+    public static void main (String[] args)throws IOException{
+          BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+          long n = Long.parseLong(br.readLine());
+          System.out.println(Solve(n));
+    }
+}
+Median of Two sorted Arrays
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+class Main{
+static double Solve(int []ar1, int n,int []ar2, int m){
+	int i = 0;
+	int j = 0; 
+	int  count;
+	double m1 = -1, m2 = -1;
+
+	for (count = 0; count <= (m + n)/2; count++)
+	{
+
+		m2=m1;
+		if(i != n && j != m)
+		{
+			m1 = (ar1[i] > ar2[j]) ? ar2[j++] : ar1[i++];
+		}
+		else if(i < n)
+		{
+			m1 = ar1[i++];
+		}
+
+		else
+		{
+			m1 = ar2[j++];
+		}
+	}
+	if((m + n) % 2 == 1){
+		return m1;
+	}
+	else{
+		return (m1+m2)/2;
+	}
+}	
+
+public static void main(String[] args)throws IOException{
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    String srr[] = br.readLine().trim().split(" ");
+    int n=Integer.parseInt(srr[0]);
+    int m=Integer.parseInt(srr[1]);
+	int arr[]=new int[n];
+    int brr[]=new int[m];
+
+    String input1[] = br.readLine().trim().split(" ");
+    for(int i=0;i<n;i++){
+        arr[i]=Integer.parseInt(input1[i]);
+    }
+
+    String input2[] = br.readLine().trim().split(" ");
+    for(int i=0;i<m;i++){
+        brr[i]=Integer.parseInt(input2[i]);
+    }
+	System.out.printf("%.2f",Solve(arr, n,brr, m));
+}
+}
