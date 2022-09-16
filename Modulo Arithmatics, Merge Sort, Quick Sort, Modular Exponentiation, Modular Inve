@@ -1,0 +1,344 @@
+Is this prime?
+#include<bits/stdc++.h>
+#pragma GCC optimize "03"
+using namespace std;
+#define Abhishek main
+#define int long long int
+#define ld long double
+#define pi pair<int, int>
+#define pb push_back
+#define fi first
+#define se second
+#define IOS ios::sync_with_stdio(false); cin.tie(0); cout.tie(0)
+#ifndef LOCAL
+#define endl '\n'
+#endif
+ 
+const int N = 2e5 + 5;
+const int mod = 1e9 + 7;
+const int inf = 1e9 + 9;
+
+int power(int a, int b){
+	int ans = 1;
+	b %= (mod-1);
+	while(b){
+		if(b&1)
+			ans = (ans*a) % mod;
+		b >>= 1;
+		a = (a*a) % mod;
+	}
+	return ans;
+}
+
+int f(int n, int p){
+	int ans = 1;
+	int cur = 1;
+	while(cur <= n/p){
+		cur = cur*p;
+		int z = power(p, n/cur);
+		ans = (ans*z) % mod;
+	}
+	return ans;
+}
+
+signed Abhishek() {
+	IOS;
+	int x, n, ans = 1;
+	cin >> x >> n;
+	for(int i = 2; i*i <= x; i++){
+		if(x%i != 0)	continue;
+		ans = (ans*f(n, i)) % mod;
+		while(x%i == 0)
+			x /= i;
+	}	
+	if(x > 1)
+		ans = (ans*f(n, x)) % mod;
+	cout << ans;
+	return 0;
+}
+Find jth element in ith row of a pascal triangle
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      // Your code here
+                      Scanner sc=new Scanner(System.in);
+			int T=sc.nextInt();
+			for(int t=0;t<T;t++){
+				int row=sc.nextInt();
+				int colm=sc.nextInt();
+
+				int max=Math.max(row,colm);
+				long [][]a=new long[max+1][max+1];
+				for(int j=0;j<max+1;j++){
+					for(int k=0;k<max+1;k++){
+						if(k==0 || k==j){
+							a[j][k]=1;
+						}
+						else if(k<j && k!=0 && j!=0){
+							a[j][k]=(a[j-1][k]%((long)Math.pow(10,9)+7)+a[j-1][k-1]%((long)Math.pow(10,9)+7));
+						}
+						else{a[j][k]=0;}
+					}
+				}
+				System.out.print((a[row][colm])%((long)Math.pow(10,9)+7));
+				System.out.println();
+			}
+	}
+ }
+ Excel sheet
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    static long alphaToNumber(String s){
+        long result=0;
+        long m=1000000007;
+        for(int i=0;i<s.length();i++){
+            result=result*26;
+            result=result+s.charAt(i)-'A'+1;
+            result=result%m;
+        }
+        return result%m;
+    }
+    public static void main (String[] args) {
+        Scanner input=new Scanner(System.in);
+        String s=input.next();
+        System.out.println(alphaToNumber(s));
+                      
+    }
+}
+Implementing Merge Sort
+#include<bits/stdc++.h>
+using namespace std;
+void merge(int arr[], int p, int q, int r) {
+  int n1 = q - p + 1;
+  int n2 = r - q;
+
+  int L[n1], M[n2];
+
+  for (int i = 0; i < n1; i++)
+    L[i] = arr[p + i];
+  for (int j = 0; j < n2; j++)
+    M[j] = arr[q + 1 + j];
+
+  int i, j, k;
+  i = 0;
+  j = 0;
+  k = p;
+  while (i < n1 && j < n2) {
+    if (L[i] <= M[j]) {
+      arr[k] = L[i];
+      i++;
+    } else {
+      arr[k] = M[j];
+      j++;
+    }
+    k++;
+  }
+
+
+  while (i < n1) {
+    arr[k] = L[i];
+    i++;
+    k++;
+  }
+
+  while (j < n2) {
+    arr[k] = M[j];
+    j++;
+    k++;
+  }
+}
+void mergeSort(int arr[], int l, int r) {
+  if (l < r) {
+    int m = l + (r - l) / 2;
+
+    mergeSort(arr, l, m);
+    mergeSort(arr, m + 1, r);
+
+    merge(arr, l, m, r);
+  }
+}
+
+void printArray(int arr[], int size) {
+  for (int i = 0; i < size; i++)
+    cout << arr[i] << " ";
+  cout << endl;
+}
+
+int main() {
+
+    int n;
+    cin>>n;
+
+    for(int p=0;p<n;p++){
+        
+        int size;
+        cin>>size;
+        int arr[size];
+        for(int i=0;i<size;i++){
+            cin>>arr[i];
+        }
+          mergeSort(arr, 0, size - 1);
+          printArray(arr, size);
+
+
+           // this code contributed by Abhishek Chauhan
+    }
+
+  return 0;
+}
+Wave array
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    private static void swap(int arr[], int a, int b) {
+        int temp;
+        temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+
+    private static void sortInWave(int arr[], int n) {
+        Arrays.sort(arr);
+        for (int i = 0; i < n - 1; i += 2) {
+            swap(arr, i, i + 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        sortInWave(arr, n);
+        for (int i : arr) {
+            System.out.print(i + " ");
+        }
+    }
+}
+Modular multiplicative inverse
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+   static int modInverse(int a, int m)
+    {
+      
+        for (int x = 1; x < m; x++)
+            if (((a%m) * (x%m)) % m == 1)
+                return x;
+        return -1;
+    }
+ 
+    // Driver Code
+    public static void main(String args[])
+    {
+       Scanner sc=new Scanner(System.in);
+	   int t=sc.nextInt();
+	   while(t-- >0){
+		   int a=sc.nextInt();
+		   int m=sc.nextInt();
+       
+        // Function call
+        System.out.println(modInverse(a, m));
+    }
+	}
+}
+Alwar
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    private static int MOD=1000000007;
+    private static long power(long a ,long b){
+        long result=1, multiplier=a;
+        while(b!=0){
+            if((b&1)!=0){
+                result=(result*multiplier)%MOD;
+            }
+            multiplier=(multiplier*multiplier)%MOD;
+            b=b>>1;
+        }
+        return result;
+    }
+    private static int countNumbers(int K){
+        return(int)((power(2,K-1)*10)%MOD);
+    }
+    public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        long m=1000000007L;
+        while(t-->0){
+            int k=sc.nextInt();
+            System.out.println(countNumbers(k)%MOD);
+        }
+                      
+    }
+}
+Super-Exponentation
+#include <bits/stdc++.h>
+using namespace std;
+#define mem(a, b) memset(a, (b), sizeof(a))
+#define fore(i,a) for(int i=0;i<a;i++)
+#define fore1(i,j,a) for(int i=j;i<a;i++)
+#define print(ar) for(int i=0;i<ar.size();i++)cout<<ar[i]<<" ";
+#define END cout<<'\n'
+const double pi=acos(-1.0);
+typedef pair<int, int> PII;
+typedef vector<long long> VI;
+typedef vector<string> VS;
+typedef vector<PII> VII;
+typedef vector<VI> VVI;
+typedef map<int,int> MPII;
+typedef set<int> SETI;
+typedef multiset<int> MSETI;
+typedef long int li;
+typedef unsigned long int uli;
+typedef long long int ll;
+typedef unsigned long long int ull;
+ll fastexp (ll a, ll b, ll n) {
+ ll res = 1;
+ while (b) {
+ if (b & 1) res = res*a%n;
+ a = a*a%n;
+ b >>= 1;
+ }
+ return res;
+}
+void fast(){
+ios::sync_with_stdio(0);
+cin.tie(0);
+cout.tie(0);
+}
+int main()
+ { 
+ fast();
+ ll a,b,c;
+int t, n, k;
+cin >> t;
+while(t--) {
+ cin >> a >>b >>c;
+ ll mod = 1e9+7;
+ ll k = fastexp(b,c,mod-1);
+ ll ans= fastexp(a,k,mod);
+cout<<ans<<endl;
+}
+}
