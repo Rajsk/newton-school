@@ -1,0 +1,287 @@
+Print the Linked List
+public static void printList(Node head) {
+		while(head!=null){
+            System.out.print(head.val+" ");
+            head=head.next;
+        }
+    }
+   Longest Substring with Even Number of Vowels
+   import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      String s;
+                      Scanner sc=new Scanner(System.in);
+                      s=sc.nextLine();
+                      int n=s.length();
+                      int []prearr=new int[n];
+                      if(s.charAt(0)=='a'||s.charAt(0)=='e'||s.charAt(0)=='i'||s.charAt(0)=='o'||s.charAt(0)=='u'){
+                       prearr[0]=1;
+                      }
+                      else prearr[0]=0;
+                      for(int i=1;i<n;i++){
+                          if(s.charAt(i)=='a'||s.charAt(i)=='e'||s.charAt(i)=='i'||s.charAt(i)=='o'||s.charAt(i)=='u'){
+                             prearr[i]=prearr[i-1]+1;
+                         } 
+                         else prearr[i]=prearr[i-1];
+                         
+
+                        }
+                      int ans1=0;
+                      for(int i=n-1;i>=0;i--){
+                          if(prearr[i]%2==0){
+                              ans1=i+1;
+                              break;
+                            }
+                        }
+                          int l=0;
+                          int r=0;
+                          for(int i=0;i<n;i++){
+                              if(prearr[i]%2==1){
+                                  l=i;
+                                  break;
+                              }
+                          }
+                          for(int i=n-1;i>=0;i--){
+                              if(prearr[i]%2==1){
+                                  r=i;
+                                  break;
+                              }
+                          }
+                          int ans2=r-l;
+                          int ans=Math.max(ans1,ans2);
+                          System.out.println(ans);
+
+                      
+    }
+}
+Delete the Middle of the Linked List
+public static Node deleteMiddleElement(Node head) {
+		// return the head of the modified Linked List
+        Node t=head;
+        int l=0;
+        while(t!=null){
+            t=t.next;
+            l++;
+        }
+        if(l==1){
+            Node new_node=new Node(-1);
+            return new_node;
+        }
+        else if(l==2){
+            head.next=null;
+            return head;
+        }
+        else{
+            t=head;
+            for(int i=1;i<l/2;i++){
+                t=t.next;
+            }
+            t.next=t.next.next;
+            return head;
+        }
+    }
+ 
+ Array generator
+ import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      Scanner sc=new Scanner(System.in);
+                      int N=sc.nextInt();
+                      int A[]=new int[N+1];
+                      int B[]=new int[N];
+                      for(int x=0;x<N;x++) B[x]=sc.nextInt();
+                      A[0]=0;
+                      for(int x=0;x<N;x++){
+                          A[x+1]=B[x]+A[x];
+                      }
+                      for(int x:A)
+                      System.out.print(x+" ");
+
+    }
+}
+Count the elements
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] A=data(sc,n);
+        int[] B=data(sc,n);
+        for(int tc=sc.nextInt();tc>0;tc--){
+            int k=sc.nextInt();
+            System.out.println(prearrFun(B,A[k]));
+        }
+    }
+    public static int[] data(Scanner sc,int n){
+        int[] C=new int[n];
+        for(int x=0;x<n;x++) C[x]=sc.nextInt();
+        return C;
+    }
+    public static int prearrFun(int[] arr,int k){
+        int count=0;
+        for(int x:arr){
+            if(x<=k) count++;
+        }
+        return count;
+    }
+}
+Toys
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      // Your code here
+                Scanner sc= new Scanner(System.in);
+                int n,q;
+                n=sc.nextInt();
+                q=sc.nextInt();
+                int[] arr=new int[n];
+                for(int i = 0 ; i < n ; i++){
+                    arr[i]=sc.nextInt();
+                }
+                Arrays.sort(arr);
+                for(int i = 1 ; i < n; i++) arr[i]+=arr[i-1];
+                for(int i = 0; i < q; i++){
+                    int k;
+                    k=sc.nextInt();
+                    int ans =(n+k)/(k+1);
+                    System.out.println(arr[ans-1]);
+                }
+    }
+}
+Sort String
+static void string_sort(Node head)
+    {
+        // Complete this function
+        int[] freq=new int[26];
+        for(int i=0;i<26;i++){
+            freq[i]=0;
+        }
+        Node temp=head;
+        while(temp!=null){
+            char ch=temp.data;
+            int index=ch-'a';
+            freq[index]++;
+            temp=temp.next;
+        }
+        temp=head;
+        for(int i=0;i<26;i++){
+            for(int j=0;j<freq[i];j++){
+                char ch=(char)('a'+i);
+                temp.data=ch;
+                temp=temp.next;
+            }
+        }
+    }
+    Reversing the Linked List
+    public static Node ReverseLinkedList(Node head) {
+
+        Node prev = null; 
+        Node current = head; 
+        Node next = null; 
+        while (current != null) { 
+            next = current.next; 
+            current.next = prev; 
+            prev = current; 
+            current = next; 
+        } 
+        head = prev; 
+        return head; 
+		
+    }
+  Reversing a double linked list
+  public static Node Reverse(Node head) {
+//complete this function
+  Node prev = null; 
+        Node current = head; 
+        Node next = null; 
+        while (current != null) { 
+            next = current.next; 
+            current.next = prev; 
+            prev = current; 
+            current = next; 
+        } 
+        head = prev; 
+        return head; 
+}
+
+Coolest and Hottest Subarrays
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+         Scanner sc = new Scanner(System.in);
+            int n = sc.nextInt();
+            int[] arr = new int[n];
+            for (int i = 0; i < n; i++) {
+                arr[i] = sc.nextInt();
+            }
+            //KADANE'S ALGORITHM
+            //Finding max sum of sub array
+            long maxsum = Integer. MIN_VALUE ;
+            long cursum = 0;
+            int i = 0;
+            while(i<n) {
+                cursum = cursum + arr[i];
+                if (maxsum < cursum) {
+                    maxsum = cursum;
+                }
+
+                if (cursum < 0) {
+                    cursum = 0;
+                }
+            i++;
+            }
+           // find min sum of sub array 
+           long minsum = Integer. MAX_VALUE ;
+            long cursum2 = Integer. MAX_VALUE ;
+            for ( i = 0; i < n; i++)
+        {
+             
+            // if cursum2 > 0, then it could
+            // not possibly contribute to the
+            // minimum sum further
+            if (cursum2 > 0)
+                cursum2 = arr[i];
+             
+            // else add the value arr[i] to
+            // cursum2
+            else
+                cursum2 += arr[i];
+             
+            // finding final min value
+            minsum = Math.min(minsum,cursum2);        
+        }
+        //finding happiness of array = diff of max sum and minsum
+        long happiness = Math.abs(maxsum - minsum);
+
+        System.out.print(happiness);
+    }
+}
+
+
