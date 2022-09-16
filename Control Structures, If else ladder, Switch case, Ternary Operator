@@ -1,0 +1,232 @@
+#If- Leap year
+import java.util.Scanner;
+class Main {
+   public static void main (String[] args)
+   {
+
+       Scanner scanner = new Scanner(System.in);
+       int n = scanner.nextInt();
+       LeapYear(n);
+}
+static void LeapYear(int n){
+     int p=0;
+    if(n%400==0){
+        p=1;
+    }else if(n%100==0){
+        p=0;
+    }else if(n%4==0){
+        p=1;
+    }else{
+        p=0;
+    }
+
+    if(p==1){
+        System.out.print("YES");
+    }else{
+        System.out.print("NO");
+    }
+}
+}
+#Student Grades
+
+import java.io.*; 
+import java.util.*;
+class Main {
+    public static void main (String[] args) {
+     Scanner sc=new Scanner(System.in);
+     int a = sc.nextInt();
+     int b = sc.nextInt();
+     int c = sc.nextInt();
+     int d = sc.nextInt();
+     int e = sc.nextInt();
+     int total_marks = a+b+c+d+e;
+     int percentage =  total_marks/5;
+
+     if (percentage >= 80){
+         System.out.println("A");
+     }
+     else if(percentage < 80 && percentage >= 60){
+         System.out.println("B");
+     }
+     else if(percentage < 60 && percentage >= 40){
+         System.out.println("C");
+     }
+     else{
+         System.out.println("D");
+     }
+    }
+}
+#Tic Tac Toe
+
+import java.io.*; 
+import java.util.*; 
+class Main {
+    public static void main (String[] args) {
+        Scanner inputTaker = new Scanner(System.in);
+        String inputString = inputTaker.nextLine();
+        char player1 = inputString.charAt(0);
+        char player2 = inputString.charAt(2);
+
+        if(player1 == 'R' || player2 == 'R'){
+            System.out.println("R");
+        }else if(player1 == 'J' || player2 == 'J'){
+            
+            if(player1 == 'J'){
+                System.out.println(player2);
+            }else{
+                System.out.println(player1);
+            }
+
+        }else{
+            System.out.println("D");
+        }
+    }
+}
+#Dragon slayer
+static int DragonSlayer(int A, int B, int C,int D){
+    int Do = A - D;
+    int No = C;
+    while(Do > 0 && No > 0){
+        No -= B;
+        if(No <= 0) return 0;
+        Do -= D;
+    }
+    if(Do >= No) return 0;
+    else return 1;
+}
+#Queen's attack
+static int  QueenAttack(int X, int Y, int P, int Q)
+{
+if (X == P)
+        return 1;
+ 
+   
+    if (Y == Q)
+        return 1;
+ 
+   
+    if (Math.abs(X - P) == Math.abs(Y - Q))
+        return 1;
+ 
+    
+    return 0;
+}
+#Penny and Charity
+static int Charity(int N, int M) {
+        if (N <= 1000 && M <= 1000) {
+            if (N < M) {
+                int res = M / N;
+                if (res != 1) {
+                    return res;
+                } else {
+                    return -1;
+                }
+            } else {
+                return -1;
+            }
+        } else {
+            return 0;
+        }
+    }
+   # Pokemon Master
+   static int PokemonMaster(int A, int B){
+  int k = (A >= B) ? 1 : 0;
+        return k;
+
+}
+#Knight
+static int Knight(int X, int Y){
+    int P[] = { 2, 1, -1, -2, -2, -1, 1, 2 };
+    int Q[] = { 1, 2, 2, 1, -1, -2, -2, -1 };
+    int n = 9;
+    int count = 0;
+    for (int i = 1; i < 9; i++) {
+        int x = X + P[i-1];
+        int y = Y + Q[i-1];
+        if (x >= 1 && y >= 1 && x < n && y < n)
+            count++;
+        }
+    return count;
+}
+#Logical operators
+import java.io.*; 
+import java.util.*; 
+class Main {
+    public static void main (String[] args) {
+        Scanner x = new Scanner(System.in);
+        int a = x.nextInt();
+        int b = x.nextInt();
+        if (a<=10 && b>=10){
+            System.out.print("true ");
+        }
+        else{
+            System.out.print("false ");
+        }
+        if (a%2==0 || b%2==0){
+            System.out.print("true ");
+        }
+        else{
+            System.out.print("false ");
+        }
+        if (a==b){
+            System.out.print("false ");
+        }
+        else{
+            System.out.print ("true ");
+        }
+    }
+}
+#Checking a Number
+import java.io.*; 
+import java.util.*; 
+class Main {
+    public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+        long num=sc.nextLong();
+          if(num>0){
+             System.out.println("Positive");
+            }else if(num<0){
+                System.out.println("Negative");
+            }
+            else{
+                System.out.println("Zero");
+        }
+    }
+}
+#Odd or Even
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      // Your code here
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        if(n%2==0){
+            System.out.print("Even");
+        }else{
+            System.out.print("Odd");
+        }
+    }
+}
+#MCQ Exam
+import java.util.*;
+import java.io.*;
+class Main {
+    public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+        int arr[]=new int[4];
+        for(int i=0;i<4;i++){
+            arr[i]=sc.nextInt();
+        }
+        Arrays.sort(arr);
+
+        System.out.println(arr[3]);
+	}
+}
+
+
+
+
