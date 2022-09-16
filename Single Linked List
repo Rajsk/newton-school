@@ -1,0 +1,95 @@
+Binary to Decimal
+static int decimalValue(Node head)
+    {
+    	int n=0;
+        Node curr=head;
+        int l=0;
+        while(curr!=null){
+            curr=curr.next;
+            l++;
+        }
+        curr=head;
+        l--;
+        while(curr!=null){
+            n+=curr.data*Math.pow(2,l);
+            l--;
+            curr=curr.next;
+        }
+        return n;
+    }
+Zeros at front of linked list
+static public Node moveZeroes(Node head)
+{
+       Node head1=null;
+       Node curr=head;
+       Node startnew=null;
+       int c=0;
+       while(curr!=null){
+           if(curr.data!=0){
+               Node new_node=new Node(curr.data);
+               if(head1==null){
+                   head1=new_node;
+                   startnew=head1;
+               }
+               else{
+                   head1.next=new_node;
+                   head1=new_node;
+               }
+           }
+           else{
+               c++;
+           }
+           curr=curr.next;
+       }
+       head1=startnew;
+       for(int i=0;i<c;i++){
+           Node new_node=new Node(0);
+           new_node.next=head1;
+           head1=new_node;
+       }
+       return head1;
+}
+Merge two sorted linked list
+public static Node Merge (Node head1, Node head2){
+//Enter your code here
+Node head=null;
+    while(head1!=null&&head2!=null){ 
+        if (head1.val<head2.val) {
+            head=insert111 (head, head1.val); 
+            head1=head1.next;
+        }
+        else {
+            head=insert111 (head, head2.val); 
+            head2=head2.next;
+        }
+    }
+    while(head1!=null) {
+        head=insert111 (head, head1.val);
+        head1=head1.next;
+    }
+    while (head2!=null) {
+        head=insert111 (head, head2.val);
+        head2=head2.next;
+    }
+    return head;  
+}
+Nth node from end of linked list
+static int getNthFromLast(Node head, int n)
+{
+
+       Node first = head;
+    Node second = head;
+    for(int i=0;i<n-1;i++){
+        second = second.next;
+        if(second == null)
+            return -1;
+    }
+    
+    while(second.next != null){
+        first = first.next;
+        second = second.next;
+    }
+    
+   
+    return first.data;
+}
