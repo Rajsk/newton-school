@@ -1,0 +1,335 @@
+Count unique elements
+#include <bits/stdc++.h> // header file includes every Standard library
+#include <algorithm>
+#include <iostream>
+using namespace std;
+int distinct_elements(int arr[], int n){
+
+   sort(arr, arr + n);
+
+   int count = 0;
+   for (int i = 0; i < n; i++){
+ 
+      while (i < n - 1 && arr[i] == arr[i + 1]){
+         i++;
+      }
+      count++;
+   }
+   return count;
+}
+// Main Function
+int main(){
+	int n;
+	cin>>n;
+	int arr[n];
+
+	for(int i=0;i<n;i++){
+		cin>>arr[i];
+	}
+   cout <<distinct_elements(arr, n)<<endl;
+   return 0;
+}
+Longest Sub-Array with Sum K
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args)throws IOException {
+                      // Your code here
+ 
+        BufferedReader bi = new BufferedReader(
+            new InputStreamReader(System.in));
+        int t = Integer.parseInt(bi.readLine());
+        while(t>0)
+        {
+            t--;
+            String[] input = bi.readLine().split(" ");
+            int n = Integer.parseInt(input[0]);
+            int k = Integer.parseInt(input[1]);
+            String[] arr = bi.readLine().split(" "); 
+           
+             HashMap<Integer, Integer> map = new HashMap<>();
+             int sum = 0;int maxLen = 0;
+       
+             // traverse the given array
+             for (int i = 0; i < n; i++) {
+                 
+                  // accumulate sum
+                  sum += Integer.parseInt(arr[i]);
+                 
+                  // when subarray starts from index '0'
+                  if (sum == k)
+                      maxLen = i + 1;
+ 
+                  // make an entry for 'sum' if it is
+                  // not present in 'map'
+                  if (!map.containsKey(sum)) {
+                      map.put(sum, i);
+                  }
+ 
+                  // check if 'sum-k' is present in 'map'
+                  // or not
+                  if (map.containsKey(sum - k)) {
+                       
+                      // update maxLength
+                      if (maxLen < (i - map.get(sum - k)))
+                          maxLen = i - map.get(sum - k);
+                  }
+             }
+            System.out.println(maxLen); 
+        }
+    }
+  
+}
+Pairs sum divisible by k
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+
+int countKdivPairs(int A[], int n, int K)
+{
+
+	int freq[K] = { 0 };
+
+	int ans = 0;
+
+	for (int i = 0; i < n; i++) {
+		int rem = A[i] % K;
+	
+		ans += freq[(K - rem) % K];
+		freq[rem]++;
+	}
+
+	return ans;
+}
+
+int32_t  main()
+{
+
+
+	int n;cin>>n;
+	int k;cin>>k;
+
+	int A[n];
+
+	for(int i=0;i<n;i++){
+		cin>>A[i];
+	}
+	cout << countKdivPairs(A, n, k);
+
+	return 0;
+}
+Largest subarray with zero sum
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    static int maxLen(int arr[], int n) {
+
+        HashMap<Integer, Integer> hM = new HashMap<Integer, Integer>();
+
+        int sum = 0;
+        int max_len = 0;
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+            if (arr[i] == 0 && max_len == 0) {
+                max_len = 1;
+            }
+            if (sum == 0) {
+                max_len = i + 1;
+            }
+            Integer prev_i = hM.get(sum);
+            if (prev_i != null) {
+                max_len = Math.max(max_len, i - prev_i);
+            } else {
+                hM.put(sum, i);
+            }
+        }
+        return max_len;
+    }
+
+    public static void main(String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int nn = maxLen(arr, n);
+        if (nn > 0) {
+            System.out.println(nn);
+        } else {
+            System.out.println("-1");
+        }
+    }
+}
+Unique number of characters
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      Hashtable<Character,Integer>ht=new Hashtable<>();
+                      Scanner sc= new Scanner(System.in);
+                      String s=sc.nextLine();
+                      int l=s.length();
+                      for(int i=0;i<l;i++){
+                         char ch=s.charAt(i);
+                         ht.put(ch,1);
+                      }
+                      System.out.println(ht.size());
+    }
+}
+Happy Number
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static long sumofsquare(long n)
+    {
+        long sum=0;
+        while(n>0){
+            long r=n%10;
+            sum+=r*r;
+            n=n/10;
+        }
+        return sum;
+    }
+    public static void main (String[] args) {
+                      long n;
+                      Scanner sc=new Scanner(System.in);
+                      n=sc.nextLong();
+                      HashSet<Long>st=new HashSet<Long>();
+                      while(true){
+                          if(n==1){
+                              System.out.println("true");
+                              break;
+                          }
+                          st.add(n);
+                          n=sumofsquare(n);
+                          if(st.contains(n)==true){
+                              System.out.println("false");
+                              break;
+
+
+                          }
+                      }
+
+    }
+}
+Longest Consecutive Sequence
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+                      Scanner sc=new Scanner(System.in);
+                      int n=sc.nextInt();
+                      int arr[]=new int[n+1];
+                      arr[0]=0;
+                      for(int i=1;i<=n;i++){
+                          arr[i]=sc.nextInt();
+                      }
+                      Arrays.sort(arr);
+                      int ans[]=new int[n+1];
+                      ans[0]=0;
+                      for(int j=1;j<=n;j++){
+                          if(arr[j]==arr[j-1]){
+                              ans[j]=ans[j-1];
+                          }
+                          else if(arr[j]-arr[j-1]==1){
+                              ans[j]=1+ans[j-1];
+                          }
+                          else ans[j]=1;
+
+                      }
+                      int maxlen=0;
+                      for(int i=0;i<=n;i++){
+                          maxlen=Math.max(maxlen,ans[i]);
+                      }
+                      System.out.print(maxlen);
+
+    }
+}
+First non-repeating character in a String
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    // static final int NO_OF_CHARS = 256;
+    // static char count[] = new char[NO_OF_CHARS];
+    public static void main(String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        String non = sc.nextLine();
+
+        Map<Character, Integer> m = new HashMap<Character, Integer>();
+
+        for (int i = 0; i < non.length(); i++) {
+            if (m.get(non.charAt(i)) != null) {
+                m.put(non.charAt(i), m.get(non.charAt(i)) + 1);
+            } else {
+                m.put(non.charAt(i), 1);
+            }
+        }
+
+        for (int i = 0; i < non.length(); i++) {
+
+            if (m.get(non.charAt(i)) == 1) {
+                System.out.println(i);
+                break;
+            } else {
+                if (i == non.length() - 1) {
+                    System.out.println("-1");
+                }
+            }
+        }
+    }
+}
+Group of Numbers
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+Scanner sc = new Scanner(System.in);
+int n = sc.nextInt();
+int[] arr = new int[n];
+for(int i=0;i<n;i++){ 
+arr[i] = sc.nextInt();
+} 
+int maxE = -1;for (int i = 0; i < n; i++) {
+ maxE = Math.max(maxE, arr[i]);
+ } 
+ int[] freq = new int[maxE + 1];
+ for (int i = 0; i < n; i++) { 
+freq[arr[i]]++;
+} 
+int maxF = -1;
+for (int i = 0; i <= maxE; i++) {
+ maxF = Math.max(maxF, freq[i]);
+ }
+  while(maxF > 0){
+for(int i=maxE; i>=0;i--){ 
+if(maxF == freq[i]){ 
+System.out.print(i + " ");
+ }
+ }
+ maxF--;
+}}}
